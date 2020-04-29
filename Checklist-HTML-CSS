@@ -1,0 +1,246 @@
+<html>
+<style>
+
+#Top-Line {
+height: 5px;
+background-color: #f48024;
+}
+
+#Main-Header-Block {
+
+background-color: fafafb;
+box-shadow:0px 1px 0px 0px #D3D3D3;
+}
+
+#Intro-Outline {
+border-width: 1px;
+border-style: solid;
+border-color:#D3D3D3;
+margin-top: 40px;
+}
+
+#Main-Title {
+text-align: center;
+font-family: Helvetica;
+color: #0077cc;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+#Directions {
+text-align: center;
+font-family: Helvetica;
+margin: 0px 10% 0px 10%;
+padding-bottom: 15px;
+}
+
+#Post-Directions-Line {
+border-top: 1px solid #D3D3D3;
+margin: 0 5% 0 5%;
+}
+
+.List-Of-Items {
+font-family: Helvetica;
+}
+
+a {
+color: #0077cc;
+font-family: Helvetica;
+text-decoration: none;
+}
+a:hover {
+text-decoration: none;
+font-weight: bold;
+}
+
+#Master-Question-Block {
+font-family: Helvetica;
+border-width: 1px;
+border-style: solid;
+border-color:#D3D3D3;
+margin-top: 40px;
+}
+.Question-Section {
+font-family: Helvetica;
+color: #0077cc;
+margin: 5% 5% 1% 5%;
+}
+.Question-Details {
+font-family: Helvetica;
+margin: 0% 5% 1% 5%;
+}
+.Questions {
+font-family: Helvetica;
+margin: 2% 5% 1% 5%;
+}
+.Answers {
+font-family: Helvetica;
+margin: 0% 0 0% 5%;
+}
+/*#Site-URL {
+font-family: Helvetica;
+margin-left:5%; 
+} */
+
+hr {
+margin: 3% 5% 0% 5%;
+color: #D3D3D3;
+}
+
+</style>
+
+<div id="Top-Line"></div>
+<div id ="Main-Header-Block">
+	<a href="#">
+	<img height="50px" 		src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.svg?v=a010291124bf" alt="Stack Overflow Logo">
+	</a>
+</div>
+
+<div id = "Intro-Outline">
+
+	<h1 id="Main-Title"> Azure Hosted Pre-Sales Checklist </h1>
+
+	<p id = "Directions">This checklist ensures we have the proper resources in place for a successful deployment. Please complete all questions and click submit. Once fully completed, you will receive a notification and email confirmation.</p> 
+    <p id = "Directions">If you have any questions or concerns, please contact your salesperson
+	</p>
+    
+    <div id="Post-Directions-Line"> </div>
+   
+   <p style="margin:5% 0% 0% 3%; font-weight: bold;" class = "List-of-Items">Check List Items:</p>
+	<ul class = "List-Of-Items"> 
+    <a href="#Site-URL"><li class = "List-Of-Items">Site URL</li></a>
+    <a href="#SSL-Cert"><li class = "List-Of-Items">SSL Certification</li></a>
+    <a href="#HA"><li class = "List-Of-Items">High Availability (HA) / High Availability with Disaster Recovery (HADR)</li></a>
+   <a href="#Instances"><li class = "List-Of-Items">Number of Instances</li></a>
+    <a href="#Firewall"><li class = "List-Of-Items">Firewall Configuration</li></a>
+    <a href="#Database"><li class = "List-Of-Items">Database Backups and Copies</li></a>
+    <a href="#ID-MGMT"><li class = "List-Of-Items">Identity Management and Authentication</li></a>
+    <a href="#Email"><li class = "List-Of-Items">Email Notifications</li></a>
+    <a href="#Brand"><li class = "List-Of-Items">Provide Brand Kit (Optional)</li></a>
+    <a href="#Contacts"><li class = "List-Of-Items">Technical Contacts</li></a>
+    <a href="#Maintenance"><li class = "List-Of-Items">Maintenance Window</li></a>
+    </ul>
+
+</div>
+
+<div id="Master-Question-Block">
+<h3 class="Question-Section" id="Site-URL">Site URL</h3>
+<p class="Question-details">This section defines the URL with which a user will navigate to Stack Overflow for Enterprise in a hosted environment. By default, we set up <company-name>.stackenterprise.co.</p>
+<p class="Questions">Will a custom domain name (other than <company-name>.stackenterprise.co) be in use?</p>
+<label class="Answers" for="Site-URL-YesNo"></label>
+<select name="SSL-Cert-YesNo">
+<option value="No">No</option>
+<option value="Yes">Yes</option>
+</select>
+<hr></hr>
+
+<h3 class="Question-Section" id="SSL-Cert">SSL Certification</h3>
+<p class="Question-details">We provide an SSL/TLS certificate by default for the <company-name>.stackenterprise.co domain. A customer may optionally bring their own certificate. For custom domains, customers MUST bring their own certificate.</p>
+<p class="Questions">Will a custom SSL certificate be in use? </p>
+<label class="Answers" for="SSL-Cert-YesNo"></label>
+<select name="SSL-Cert-YesNo">
+<option value="No">No</option>
+<option value="Yes">Yes</option>
+</select>
+
+
+<h3 class="Question-Section" id="HA">High Availability (HA) / High Availability with Disaster Recovery (HADR)</h3>
+<p class="Question-Details">By default, we host your site in a single Azure region in a redundant configuration (two web servers behind a load balancer in US East by default).</p>	
+<p class="Question-Details">As an option, for an additional fee: we can offer a standby/High Availability with Disaster Recovery (HADR) environment in a separate Azure region. The secondary environment will mirror the primary environment. The region pairs MUST be picked from Azure's Business Continuity and Disaster Recovery (BCDR) list, linked below, and is subject to engineering approval at Stack Overflow to assure they have all the necessary services available.</p>
+<p class="Questions">In which region will the primary instance be located?</p>
+<label class="Answers" for="HA-Regions"></label>
+<select name="HA-Regions">
+<option value="East-US">East US</option>
+<option value="West-US-2">West US 2</option>
+<option value="West EU">West-EU</option>
+<option value="North-EU">North EU</option>
+<option value="CA-Central">CA Central</option>
+<option value="Other">Other</option>
+</select>
+<p class="Questions">Will a second environment be necessary for standby/High Availability with Disaster Recovery servers?</p>
+<label class="Answers" for="Second-Environment"></label>
+<select name="Second-Environment">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+
+
+<h3 class="Question-Section" id="Instances">Number of Instances</h3>
+<p class="Question-details">One Production instance is provided and managed by Stack Overflow. Optionally, additional non-production (QA/Test/Dev) instances may be made available at additional cost.</p>
+<p class="Question-details">Adding a non-production instance automatically enrolls you in our Beta / Round 0 Program (see one-page overview attached) for early access to the software for testing and feedback. To opt out of participating in the program, please specify "opt-out of Beta / Round 0" in the Comment section.
+<p class="Questions">Will additional instances be required?</p>
+<label class="Answers" for="Additional-Instances"></label>
+<select name="Additional-Instances">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+
+<h3 class="Question-Section" id="Firewall">Firewall Configuration</h3>
+<p class="Question-details">The Application Gateway will expose the HTTPS ports on the web servers to the Internet without restriction by default. All users must authenticate through your Identity Provider. If this is not acceptable, we can restrict access to the Application Gateway by IP ACL (whitelists)</p>
+<p class="Questions">Will the default configuration (see notes above) be acceptable?</p>
+<label class="Answers" for="Firewalls"></label>
+<select name="Firewalls">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+
+<h3 class="Question-Section" id="Database">Database Backups and Copies</h3>
+<p class="Question-details">Azure will maintain Point in Time Recovery database backups of your Stack Overflow for Enterprise instance. Upon termination of service (please don't go!) we'll also provide a full backup of your data. Optionally, a read-only (R/O) connection or backup downloads can be made available.</p>
+<p class="Questions">Will you need to have a local copy of your Stack Overflow for Enterprise database backups? </p>
+<label class="Answers" for="Database-Backup"></label>
+<select name="Database-Backup">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+
+<h3 class="Question-Section" id="ID_MGMT">Identity Management and Authentication</h3>
+<p class="Question-details">For Azure hosted customers, we only support SAML 2.0. Please confirm you have an Identity Provider (IdP) that can provide SAML 2.0 responses to authenticate your users.</p>
+<p class="Questions">Do you currently have a SAML 2.0 Identity Provider that will be used with Stack Overflow 2.0? If not, one will need to be in place to implement Stack Overflow for Enterprise Hosted.</p>
+<label class="Answers" for="IDP-YN"></label>
+<select name="IDP-YN">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+<p class="Questions">What Identity Provider do you intend to use with Stack Overflow for Enterprise Hosted?</p>
+<label class="Answers" for="IDP-YN"></label>
+<select name="IDP-YN">
+<option value="ADFS">ADFS</option>
+<option value="Okta">Okta</option>
+<option value="OneLogin">OneLogin</option>
+<option value="Ping-Identity">Ping-Identity</option>
+<option value="Other">Other</option>
+</select>
+
+<h3 class="Question-Section" id="Email">Email Notifications</h3>
+<p class="Question-details">By default, we provide email notifications from an address in the stackenterprise.co domain. If you would like to bring your own SMTP server, you may customize the email address used by Stack Overflow for Enterprise to send email notifications.</p>
+<p class="Questions">May we send any configured email notifications from the stackenterprise.co domain?</p>
+<label class="Answers" for="Email-Notifications"></label>
+<select name="Email-Notifications">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+
+<h3 class="Question-Section" id="Brand">Provide Brand Kit (Optional)</h3>
+<p class="Question-details">We can style your site as you see fit. To do so, please either link us to your brand kit or send one to your salesperson. In particular, we can load your logo into your site. Vector format (SVG, AI, EPS) is preferable.</p>
+<p class="Questions">Please send your brand kit back with your response, or include the URL to the brand/press kit here.</P>
+
+<h3 class="Question-Section" id="Contacts">Technical Contacts</h3>
+<p class="Question-details">To deliver the site, we'll need a list of the points of technical contact for provisioning and hand-off. These contacts will be included on the engineering handoff call and will be notified of maintenance windows</p>
+<p class="Questions">Please list at least one technical contact (Name and Email)</p>
+
+
+
+<h3 class="Question-Section" id="Maintenance">Maintenance Window</h3>
+<p class="Question-details">We perform systems maintenance and version upgrades during scheduled maintenance windows. Technical contacts are given at least 24 hours notice before maintenance or upgrades occur. This assures we have engineers and developers on hand to keep the process running smoothly and respond to any incidents.</p>
+<p class="Question-details">Please note that this is a preferred window during which maintenance will occur. Actual impacts (slowness, downtime, etc.) will be enumerated in our notice.</p>		
+<p class="Questions">When maintenance or upgrades will be performed, in which time window would you prefer the work done?</p>
+<label class="Answers" for="Maintenance-Window"></label>
+<select name="Maintenance-Window">
+<option value="9-11-Eastern">9-11 AM Eastern</option>
+<option value="8-10-Eastern">8-10 PM Eastern</option>
+
+<input style="margin:1% 1% 1% 5%;" type="submit" value="Submit">
+
+</div>
+
+</html>
