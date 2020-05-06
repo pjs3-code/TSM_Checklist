@@ -1,0 +1,225 @@
+[
+    {
+        "id": "681125f6.68fa4c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "32d0f85c.434658",
+        "type": "http in",
+        "z": "681125f6.68fa4c",
+        "name": "",
+        "url": "/mysite",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 240,
+        "wires": [
+            [
+                "eca8a7ca.e0ef98"
+            ]
+        ]
+    },
+    {
+        "id": "3b1e975d.34bf18",
+        "type": "http in",
+        "z": "681125f6.68fa4c",
+        "name": "",
+        "url": "/mysitepost",
+        "method": "post",
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 440,
+        "wires": [
+            [
+                "ba5130dc.14862",
+                "a0ac6053.fb3a1"
+            ]
+        ]
+    },
+    {
+        "id": "eca8a7ca.e0ef98",
+        "type": "function",
+        "z": "681125f6.68fa4c",
+        "name": "msg.url = \"mysitepost\";",
+        "func": "msg.url = \"mysitepost\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "5f92a500.01cf1c"
+            ]
+        ]
+    },
+    {
+        "id": "ba5130dc.14862",
+        "type": "debug",
+        "z": "681125f6.68fa4c",
+        "name": "mysitepost",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 810,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "d7632d03.5dbf5",
+        "type": "http response",
+        "z": "681125f6.68fa4c",
+        "name": "",
+        "x": 830,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f7412934.eec358",
+        "type": "template",
+        "z": "681125f6.68fa4c",
+        "name": "CSS",
+        "field": "payload.style",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "#Top-Line {\nheight: 5px;\nbackground-color: #f48024;\n}\n\n#Main-Header-Block {\n\nbackground-color: fafafb;\nbox-shadow:0px 1px 0px 0px #D3D3D3;\n}\n\n#Intro-Outline {\nborder-width: 1px;\nborder-style: solid;\nborder-color:#D3D3D3;\nmargin-top: 40px;\n}\n\n#Main-Title {\ntext-align: center;\nfont-family: Helvetica;\ncolor: #0077cc;\npadding-top: 5px;\npadding-bottom: 5px;\n}\n\n#Directions {\ntext-align: center;\nfont-family: Helvetica;\nmargin: 0px 10% 0px 10%;\npadding-bottom: 15px;\n}\n\n#Post-Directions-Line {\nborder-top: 1px solid #D3D3D3;\nmargin: 0 5% 0 5%;\n}\n\n.List-Of-Items {\nfont-family: Helvetica;\n}\n\na {\ncolor: #0077cc;\nfont-family: Helvetica;\ntext-decoration: none;\n}\na:hover {\ntext-decoration: none;\nfont-weight: bold;\n}\n\n#Master-Question-Block {\nfont-family: Helvetica;\nborder-width: 1px;\nborder-style: solid;\nborder-color:#D3D3D3;\nmargin-top: 40px;\n}\n.Question-Section {\nfont-family: Helvetica;\ncolor: #0077cc;\nmargin: 5% 5% 1% 5%;\n}\n.Question-Details {\nfont-family: Helvetica;\nmargin: 0% 5% 1% 5%;\n}\n.Questions {\nfont-family: Helvetica;\nmargin: 2% 5% 1% 5%;\n}\n.Answers {\nfont-family: Helvetica;\nmargin: 0% 0 0% 5%;\n}\n/*#Site-URL {\nfont-family: Helvetica;\nmargin-left:5%; \n} */\n\nhr {\nmargin: 3% 5% 0% 5%;\ncolor: #D3D3D3;\n}\n",
+        "x": 550,
+        "y": 340,
+        "wires": [
+            [
+                "4e7ea7a0.12a408"
+            ]
+        ]
+    },
+    {
+        "id": "5f92a500.01cf1c",
+        "type": "template",
+        "z": "681125f6.68fa4c",
+        "name": "JavaScript",
+        "field": "payload.script",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "plain",
+        "template": "$(document).ready(function(e) {\n    \n    $(\"form[ajax=true]\").submit(function(e) {\n        \n        e.preventDefault();\n        \n        var form_data = $(this).serialize();\n        var form_url = $(this).attr(\"action\");\n        var form_method = $(this).attr(\"method\").toUpperCase();\n        \n        $(\"#loadingimg\").show();\n        \n        $.ajax({\n            url: form_url, \n            type: form_method,      \n            data: form_data,     \n            cache: false,\n            success: function(returnhtml){                          \n                $(\"#result\").html(returnhtml); \n                $(\"#loadingimg\").hide();                    \n            }           \n        });    \n        \n    });\n    \n});",
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "f7412934.eec358"
+            ]
+        ]
+    },
+    {
+        "id": "de5cd2ed.3fb9e",
+        "type": "http response",
+        "z": "681125f6.68fa4c",
+        "name": "",
+        "x": 830,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4e7ea7a0.12a408",
+        "type": "template",
+        "z": "681125f6.68fa4c",
+        "name": "HTML",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<html>\n  \n<div id=\"Top-Line\"></div>\n<div id =\"Main-Header-Block\">\n\t<a href=\"#\">\n\t<img height=\"50px\" \t\tsrc=\"https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.svg?v=a010291124bf\" alt=\"Stack Overflow Logo\">\n\t</a>\n</div>\n\n<div id = \"Intro-Outline\">\n\n\t<h1 id=\"Main-Title\"> Azure Hosted Pre-Sales Checklist </h1>\n\n\t<p id = \"Directions\">This checklist ensures we have the proper resources in place for a successful deployment. Please complete all questions and click submit. Once fully completed, you will receive a notification and email confirmation.</p> \n    <p id = \"Directions\">If you have any questions or concerns, please contact your salesperson\n\t</p>\n    \n    <div id=\"Post-Directions-Line\"> </div>\n   \n   <p style=\"margin:5% 0% 0% 3%; font-weight: bold;\" class = \"List-of-Items\">Check List Items:</p>\n\t<ul class = \"List-Of-Items\"> \n    <a href=\"#Site-URL\"><li class = \"List-Of-Items\">Site URL</li></a>\n    <a href=\"#SSL-Cert\"><li class = \"List-Of-Items\">SSL Certification</li></a>\n    <a href=\"#HA\"><li class = \"List-Of-Items\">High Availability (HA) / High Availability with Disaster Recovery (HADR)</li></a>\n   <a href=\"#Instances\"><li class = \"List-Of-Items\">Number of Instances</li></a>\n    <a href=\"#Firewall\"><li class = \"List-Of-Items\">Firewall Configuration</li></a>\n    <a href=\"#Database\"><li class = \"List-Of-Items\">Database Backups and Copies</li></a>\n    <a href=\"#ID-MGMT\"><li class = \"List-Of-Items\">Identity Management and Authentication</li></a>\n    <a href=\"#Email\"><li class = \"List-Of-Items\">Email Notifications</li></a>\n    <a href=\"#Brand\"><li class = \"List-Of-Items\">Provide Brand Kit (Optional)</li></a>\n    <a href=\"#Contacts\"><li class = \"List-Of-Items\">Technical Contacts</li></a>\n    <a href=\"#Maintenance\"><li class = \"List-Of-Items\">Maintenance Window</li></a>\n    </ul>\n\n</div>\n\n<div id=\"Master-Question-Block\">\n<h3 class=\"Question-Section\" id=\"Site-URL\">Site URL</h3>\n<p class=\"Question-details\">This section defines the URL with which a user will navigate to Stack Overflow for Enterprise in a hosted environment. By default, we set up <company-name>.stackenterprise.co.</p>\n<p class=\"Questions\">Will a custom domain name (other than <company-name>.stackenterprise.co) be in use?</p>\n<label class=\"Answers\" for=\"Site-URL-YesNo\"></label>\n<select name=\"SSL-Cert-YesNo\">\n<option value=\"No\">No</option>\n<option value=\"Yes\">Yes</option>\n</select>\n<hr></hr>\n\n<h3 class=\"Question-Section\" id=\"SSL-Cert\">SSL Certification</h3>\n<p class=\"Question-details\">We provide an SSL/TLS certificate by default for the <company-name>.stackenterprise.co domain. A customer may optionally bring their own certificate. For custom domains, customers MUST bring their own certificate.</p>\n<p class=\"Questions\">Will a custom SSL certificate be in use? </p>\n<label class=\"Answers\" for=\"SSL-Cert-YesNo\"></label>\n<select name=\"SSL-Cert-YesNo\">\n<option value=\"No\">No</option>\n<option value=\"Yes\">Yes</option>\n</select>\n\n\n<h3 class=\"Question-Section\" id=\"HA\">High Availability (HA) / High Availability with Disaster Recovery (HADR)</h3>\n<p class=\"Question-Details\">By default, we host your site in a single Azure region in a redundant configuration (two web servers behind a load balancer in US East by default).</p>\t\n<p class=\"Question-Details\">As an option, for an additional fee: we can offer a standby/High Availability with Disaster Recovery (HADR) environment in a separate Azure region. The secondary environment will mirror the primary environment. The region pairs MUST be picked from Azure's Business Continuity and Disaster Recovery (BCDR) list, linked below, and is subject to engineering approval at Stack Overflow to assure they have all the necessary services available.</p>\n<p class=\"Questions\">In which region will the primary instance be located?</p>\n<label class=\"Answers\" for=\"HA-Regions\"></label>\n<select name=\"HA-Regions\">\n<option value=\"East-US\">East US</option>\n<option value=\"West-US-2\">West US 2</option>\n<option value=\"West EU\">West-EU</option>\n<option value=\"North-EU\">North EU</option>\n<option value=\"CA-Central\">CA Central</option>\n<option value=\"Other\">Other</option>\n</select>\n<p class=\"Questions\">Will a second environment be necessary for standby/High Availability with Disaster Recovery servers?</p>\n<label class=\"Answers\" for=\"Second-Environment\"></label>\n<select name=\"Second-Environment\">\n<option value=\"Yes\">Yes</option>\n<option value=\"No\">No</option>\n</select>\n\n\n<h3 class=\"Question-Section\" id=\"Instances\">Number of Instances</h3>\n<p class=\"Question-details\">One Production instance is provided and managed by Stack Overflow. Optionally, additional non-production (QA/Test/Dev) instances may be made available at additional cost.</p>\n<p class=\"Question-details\">Adding a non-production instance automatically enrolls you in our Beta / Round 0 Program (see one-page overview attached) for early access to the software for testing and feedback. To opt out of participating in the program, please specify \"opt-out of Beta / Round 0\" in the Comment section.\n<p class=\"Questions\">Will additional instances be required?</p>\n<label class=\"Answers\" for=\"Additional-Instances\"></label>\n<select name=\"Additional-Instances\">\n<option value=\"Yes\">Yes</option>\n<option value=\"No\">No</option>\n</select>\n\n<h3 class=\"Question-Section\" id=\"Firewall\">Firewall Configuration</h3>\n<p class=\"Question-details\">The Application Gateway will expose the HTTPS ports on the web servers to the Internet without restriction by default. All users must authenticate through your Identity Provider. If this is not acceptable, we can restrict access to the Application Gateway by IP ACL (whitelists)</p>\n<p class=\"Questions\">Will the default configuration (see notes above) be acceptable?</p>\n<label class=\"Answers\" for=\"Firewalls\"></label>\n<select name=\"Firewalls\">\n<option value=\"Yes\">Yes</option>\n<option value=\"No\">No</option>\n</select>\n\n<h3 class=\"Question-Section\" id=\"Database\">Database Backups and Copies</h3>\n<p class=\"Question-details\">Azure will maintain Point in Time Recovery database backups of your Stack Overflow for Enterprise instance. Upon termination of service (please don't go!) we'll also provide a full backup of your data. Optionally, a read-only (R/O) connection or backup downloads can be made available.</p>\n<p class=\"Questions\">Will you need to have a local copy of your Stack Overflow for Enterprise database backups? </p>\n<label class=\"Answers\" for=\"Database-Backup\"></label>\n<select name=\"Database-Backup\">\n<option value=\"Yes\">Yes</option>\n<option value=\"No\">No</option>\n</select>\n\n<h3 class=\"Question-Section\" id=\"ID_MGMT\">Identity Management and Authentication</h3>\n<p class=\"Question-details\">For Azure hosted customers, we only support SAML 2.0. Please confirm you have an Identity Provider (IdP) that can provide SAML 2.0 responses to authenticate your users.</p>\n<p class=\"Questions\">Do you currently have a SAML 2.0 Identity Provider that will be used with Stack Overflow 2.0? If not, one will need to be in place to implement Stack Overflow for Enterprise Hosted.</p>\n<label class=\"Answers\" for=\"IDP-YN\"></label>\n<select name=\"IDP-YN\">\n<option value=\"Yes\">Yes</option>\n<option value=\"No\">No</option>\n</select>\n<p class=\"Questions\">What Identity Provider do you intend to use with Stack Overflow for Enterprise Hosted?</p>\n<label class=\"Answers\" for=\"IDP-YN\"></label>\n<select name=\"IDP-YN\">\n<option value=\"ADFS\">ADFS</option>\n<option value=\"Okta\">Okta</option>\n<option value=\"OneLogin\">OneLogin</option>\n<option value=\"Ping-Identity\">Ping-Identity</option>\n<option value=\"Other\">Other</option>\n</select>\n\n<h3 class=\"Question-Section\" id=\"Email\">Email Notifications</h3>\n<p class=\"Question-details\">By default, we provide email notifications from an address in the stackenterprise.co domain. If you would like to bring your own SMTP server, you may customize the email address used by Stack Overflow for Enterprise to send email notifications.</p>\n<p class=\"Questions\">May we send any configured email notifications from the stackenterprise.co domain?</p>\n<label class=\"Answers\" for=\"Email-Notifications\"></label>\n<select name=\"Email-Notifications\">\n<option value=\"Yes\">Yes</option>\n<option value=\"No\">No</option>\n</select>\n\n<h3 class=\"Question-Section\" id=\"Brand\">Provide Brand Kit (Optional)</h3>\n<p class=\"Question-details\">We can style your site as you see fit. To do so, please either link us to your brand kit or send one to your salesperson. In particular, we can load your logo into your site. Vector format (SVG, AI, EPS) is preferable.</p>\n<p class=\"Questions\">Please send your brand kit back with your response, or include the URL to the brand/press kit here.</P>\n\n<h3 class=\"Question-Section\" id=\"Contacts\">Technical Contacts</h3>\n<p class=\"Question-details\">To deliver the site, we'll need a list of the points of technical contact for provisioning and hand-off. These contacts will be included on the engineering handoff call and will be notified of maintenance windows</p>\n<p class=\"Questions\">Please list at least one technical contact (Name and Email)</p>\n\n\n\n<h3 class=\"Question-Section\" id=\"Maintenance\">Maintenance Window</h3>\n<p class=\"Question-details\">We perform systems maintenance and version upgrades during scheduled maintenance windows. Technical contacts are given at least 24 hours notice before maintenance or upgrades occur. This assures we have engineers and developers on hand to keep the process running smoothly and respond to any incidents.</p>\n<p class=\"Question-details\">Please note that this is a preferred window during which maintenance will occur. Actual impacts (slowness, downtime, etc.) will be enumerated in our notice.</p>\t\t\n<p class=\"Questions\">When maintenance or upgrades will be performed, in which time window would you prefer the work done?</p>\n<label class=\"Answers\" for=\"Maintenance-Window\"></label>\n<select name=\"Maintenance-Window\">\n<option value=\"9-11-Eastern\">9-11 AM Eastern</option>\n<option value=\"8-10-Eastern\">8-10 PM Eastern</option>\n\n<input style=\"margin:1% 1% 1% 5%;\" type=\"submit\" value=\"Submit\">\n\n</div>\n\n</html>\n<script>{{{payload.script}}}</script>\n<style>{{{payload.style}}}</style>",
+        "x": 690,
+        "y": 340,
+        "wires": [
+            [
+                "de5cd2ed.3fb9e"
+            ]
+        ]
+    },
+    {
+        "id": "4cee2fba.4b376",
+        "type": "comment",
+        "z": "681125f6.68fa4c",
+        "name": "Login Form",
+        "info": "",
+        "x": 350,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3d765080.903bb",
+        "type": "function",
+        "z": "681125f6.68fa4c",
+        "name": "return msg.payload to client",
+        "func": "msg.payload = 'The following data was submitted and available in the msg.payload: '+msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 400,
+        "wires": [
+            [
+                "d7632d03.5dbf5"
+            ]
+        ]
+    },
+    {
+        "id": "b417878b.6b6988",
+        "type": "comment",
+        "z": "681125f6.68fa4c",
+        "name": "Inject msg object properties",
+        "info": "",
+        "x": 360,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a0ac6053.fb3a1",
+        "type": "json",
+        "z": "681125f6.68fa4c",
+        "name": "",
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "3d765080.903bb"
+            ]
+        ]
+    },
+    {
+        "id": "b6437946.3ae658",
+        "type": "comment",
+        "z": "681125f6.68fa4c",
+        "name": "Website",
+        "info": "",
+        "x": 130,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c3f9c9aa.69bdf8",
+        "type": "comment",
+        "z": "681125f6.68fa4c",
+        "name": "Form Submission",
+        "info": "",
+        "x": 160,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "25ad3ca1.09c004",
+        "type": "comment",
+        "z": "681125f6.68fa4c",
+        "name": "Node-RED Public Site - README",
+        "info": "This Flow demonstrates how to create\na simple frontend webpage with Node-RED.\n\nThe public facing page consists of the \nclient side JavaScript, CSS and HTML. \n\nThe important technique is how the mustache \ntemplates are used. Each template will set the\n\"property\" relative to the content. \n\nThe CSS node sets the \"msg.payload.style\" property.\nThe JavaScript node sets the \"msg.payload.script\" property.\nThe HTML node then includes these properties \n<script>{{{payload.script}}}</script>\n<style>{{{payload.style}}}</style>\n\n\nThis example was created by http://www.InternetofLEGO.com\n\n",
+        "x": 460,
+        "y": 60,
+        "wires": []
+    }
+]
